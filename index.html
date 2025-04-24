@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Algorithms 2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 2rem;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 1rem;
+      overflow-x: auto;
+      border-left: 4px solid #2c3e50;
+    }
+    code {
+      font-family: Consolas, monospace;
+    }
+    hr {
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to Algorithms 2025</h1>
+
+  <p>Welcome to <strong>Algorithms 2025</strong>! In this blog, we delve into the fascinating world of algorithms, exploring concepts, enhancing techniques, and uncovering innovative ideas. Let’s start with one of the most fundamental and elegant algorithms: Binary Search.</p>
+
+  <hr>
+
+  <h2>Enhancing Binary Search: Adjusting the Search Space Beyond the Basics</h2>
+
+  <p>Binary search is one of the most elegant and widely cited algorithms in computer science. Its logic—dividing a sorted list into two halves and iteratively selecting the relevant interval—has been the bedrock of efficient search strategies for decades. Today, I want to take you on a journey exploring a variant of binary search. In this approach, we not only perform the standard binary split but also strategically adjust the search space to “look ahead” or “look backwards” when needed.</p>
+
+  <h3>Revisiting the Binary Search Fundamentals</h3>
+
+  <p>In a classic binary search, we define two pointers: <code>low</code> and <code>high</code>. For an array of length <em>n</em>, these pointers initially represent the lowest and highest indices, respectively. The algorithm then enters a loop where it calculates a midpoint using a formula like:</p>
+
+  <pre><code>mid = low + (high - low) // 2</code></pre>
+
+  <p>If the value at <code>mid</code> matches the target, the search is complete. Otherwise, based on a comparison, we adjust either:</p>
+  <ul>
+    <li><code>low</code> to <code>mid + 1</code> (if the target is greater than the midpoint), or</li>
+    <li><code>high</code> to <code>mid - 1</code> (if the target is less than the midpoint).</li>
+  </ul>
+
+  <h3>The Twist: Fine-Tuning the Search Space</h3>
+
+  <p>Imagine a situation where you are not only satisfied with finding an element, but you also need to explore adjacent possibilities—say, to find the first or last occurrence of repeated elements in a sorted array, or even to alter the "lookahead" based on additional criteria.</p>
+
+  <p>Here’s where the idea of “adjusting the space” comes into play. Consider the search space as a tuple:</p>
+
+  <pre><code>space = (low, high)</code></pre>
+
+  <p>Within each iteration, after comparing the mid element, you can decide on a more nuanced strategy:</p>
+
+  <ul>
+    <li><strong>Shifting Right:</strong> If you want to look ahead even more—for instance, checking if there’s an element just above your current candidate—you can move the left end of your interval:</li>
+  </ul>
+  <pre><code>low = mid + 1  # Look ahead to the right
+space = (low, high)</code></pre>
+
+  <ul>
+    <li><strong>Shifting Left:</strong> Similarly, if your criteria dictate that you need to look backward—perhaps confirming if an earlier position might contain a valid candidate—you can shrink the interval by moving the right pointer:</li>
+  </ul>
+  <pre><code>high = mid - 1  # Look back to the left
+space = (low, high)</code></pre>
+
+  <p>Using <code>&lt;=</code> rather than <code>&lt;</code> in the while loop condition ensures that even when your search space narrows to a single element, that candidate isn’t prematurely excluded from consideration.</p>
+
+  <h3>Pseudocode: Bringing the Concept Together</h3>
+
+  <p>Below is a pseudocode outline that encapsulates the idea:</p>
+
+  <pre><code>def enhanced_binary_search(arr, target):
+    low, high = 0, len(arr) - 1  # Initial search space tuple (low, high)
+    
+    while low &lt;= high:
+        mid = low + (high - low) // 2
+        
+        # Process mid element
+        if arr[mid] == target:
+            # Found an element; decide if you need to adjust further:
+            # For instance, if you want the first occurrence:
+            if mid &gt; 0 and arr[mid - 1] == target:
+                high = mid - 1  # Look left
+            else:
+                return mid  # Return the first occurrence found
+        elif arr[mid] &lt; target:
+            # Try to look ahead, adjust low pointer
+            low = mid + 1
+        else:
+            # When arr[mid] &gt; target, adjust high pointer to look back
+            high = mid - 1
+            
+    return -1  # Target not found</code></pre>
+
+  <hr>
+
+  <h3>Conclusion</h3>
+
+  <p>Understanding and tweaking the binary search algorithm not only reinforces your mastery of its foundational principles but also opens up new strategies for problem-solving.
