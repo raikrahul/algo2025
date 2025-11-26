@@ -2,7 +2,7 @@
 
 **The Essence of Divide and Conquer**
 
-We are solving the "Count Zeroes" problem: given an array starting with contiguous zeroes followed by arbitrary non-zero integers, write an efficient function to return the count. The input `000003 2 8` is often misinterpreted as chaotic due to the "arbitrary" non-zeros, but the essence of binary search is transforming this noise into a sorted Boolean signal. The "Divide and Conquer" strategy works not by scanning values, but by efficiently discarding halves of the search space that cannot possibly contain the transition boundary.
+We are solving the "Count Zeroes" problem: given an array starting with contiguous zeroes followed by arbitrary non-zero integers, write an efficient function to return the count. The input `000003[...]`
 
 ## 1. The Data Transformation
 
@@ -27,7 +27,7 @@ Logic: [ T  | T  | T  | F  | F  | F  ]
 
 ## 2. The Trap of Pure Division
 
-A common misconception is that Binary Search is merely `Mid = (Left + Right) / 2`. This fails because integer division truncates. If your update logic is `Low = Mid`, you create "Zeno's Paradox" where the pointer approaches the answer but never reaches it, causing an infinite loop on small inputs like `[0, 0]`.
+A common misconception is that Binary Search is merely `Mid = (Left + Right) / 2`. This fails because integer division truncates. If your update logic is `Low = Mid`, you create "Zeno's Paradox" w[...]  
 
 ```
 SCENARIO: [ 0 , 0 ]
@@ -55,7 +55,7 @@ STATUS: STUCK FOREVER.
 
 ## 3. The "Coward's Condition" & The Hybrid Strategy
 
-Many developers fear the "Off-By-One" errors that occur when binary search pointers cross (`Left > Right`). To avoid this, we often implement a "Lazy Loop" using a condition like `abs(Left - Right) > 1`. This safely divides the problem from size $N$ down to size 2, but refuses to finish the job, leaving a "residue" of unchecked elements.
+Many developers fear the "Off-By-One" errors that occur when binary search pointers cross (`Left > Right`). To avoid this, we often implement a "Lazy Loop" using a condition like `abs(Left - Right[...]`  
 
 ```
 SCENARIO: [ 0, 0, 0, 50 ] (Target: 3)
@@ -81,7 +81,7 @@ STATUS: CORRECT.
 
 ## 4. The Implementation (Mixed Strategy)
 
-This implementation satisfies the "Divide and Conquer" philosophy by using Binary Search to handle the bulk of the data and a Linear Scan helper to handle the boundary precision. It is robust against edge cases because it does not rely on the pointers crossing blindly.
+This implementation satisfies the "Divide and Conquer" philosophy by using Binary Search to handle the bulk of the data and a Linear Scan helper to handle the boundary precision. It is robust agai[...]  
 
 ```rust
 fn count_zeroes_mixed_strategy(array: &[i32]) -> i32 {
@@ -120,3 +120,8 @@ fn count_zeroes_mixed_strategy(array: &[i32]) -> i32 {
 }
 ```
 
+
+
+## References
+
+- [Notebook on this topic](https://notebooklm.google.com/notebook/8fb7cae0-eee3-45b7-8b53-ce4259d928be)
