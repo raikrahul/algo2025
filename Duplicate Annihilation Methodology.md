@@ -165,3 +165,4 @@ fn findmissing(nums: &[i32]) -> Option<i32> {
     Some(res)
 }
 ```
+https://notebooklm.google.com/notebook/652974a6-46e2-4bbe-aac7-d35f70deca67
