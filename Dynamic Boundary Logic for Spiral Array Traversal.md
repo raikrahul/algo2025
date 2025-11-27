@@ -160,6 +160,6 @@ fn print_spiral_way(a: &[Vec<char>], n: usize) {
 
 
 
-
+https://notebooklm.google.com/notebook/0c29acf0-41f7-4878-9763-ac3f3bc7adc8
 
 
