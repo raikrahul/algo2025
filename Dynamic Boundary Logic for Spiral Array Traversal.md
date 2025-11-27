@@ -20,7 +20,27 @@ fn printSprialWay(a : &[Vec<char>], n : usize)
    let mut top:usize = 0;
    let mut bottom:usize  = n-1;
 
-   
+  while   top <= bottom && left <= right          { 
+
+   for i in left..=right {
+       println("{}", a[top][i]
+       }
+   top = top + 1;
+   for i in top..=bottom
+   {
+       println!("{}", a[i][right]);
+       }
+   right = right -1;
+   for i in (left..=right).rev()
+   {
+       println("{}", a[bottom][i]);
+   }
+   bottom = bottom - 1;
+   for i in (top..=bottom).rev()
+   {
+      println!("{}", a[i][left]);
+      }
+   left = left  + 1;
 
 }
 
