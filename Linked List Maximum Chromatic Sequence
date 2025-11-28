@@ -1,1 +1,51 @@
 
+Given a single linked list that consists of ‘R’ and ‘B’ values only,
+write an efficient function to find the maximum sequence length of
+any color. What are the time and space complexities of your solution?
+Function prototype:
+int FindMaxSeq(Node head)
+Input: R B R B B R R R R B B B R
+Output: 4
+
+#[derive(Debug, Clone)]
+struct Node {
+    val : char,
+    next : Option<Box<Node>>,
+}
+fn find_max_seq(node : &head) -> usize
+{
+    let mut res : usize =0;
+     let mut current = &head;
+    let mut current_count : usize = 0;
+    let mut current_color : char = Option<char>;
+    let mut previous_color : char = Option<char>;
+    let mut prev : Node = head;
+    let mut max_count :usize = 0;
+
+    while let Some(node) = current_node {
+     current_color = current_node.val;
+     if current_color != prev_color {
+          if current_count > max_count {
+             max_count = current_count;
+          
+
+         }
+         current_count = 0;
+      }
+     
+      current_node = &node.next;
+     prev_color = current_color;
+    current_count +=1;
+    }
+     
+  max_count
+
+}
+
+
+
+
+
+
+
+
