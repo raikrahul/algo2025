@@ -15,16 +15,16 @@ struct Node {
 fn find_max_seq(node : &head) -> usize
 {
     let mut res : usize =0;
-     let mut current = &head;
+     let mut current_node = &head;
     let mut current_count : usize = 0;
-    let mut current_color : char = Option<char>;
-    let mut previous_color : char = Option<char>;
-    let mut prev : Node = head;
+    let mut current_color : Option<char> = None;
+    llet mut previous_color: Option<char> = head.as_ref().map(|n| n.val);
+
     let mut max_count :usize = 0;
 
     while let Some(node) = current_node {
-     current_color = current_node.val;
-     if current_color != prev_color {
+     current_color = node.val;
+     if current_color != previous_color {
           if current_count > max_count {
              max_count = current_count;
           
@@ -34,7 +34,7 @@ fn find_max_seq(node : &head) -> usize
       }
      
       current_node = &node.next;
-     prev_color = current_color;
+     previous_color = current_color;
     current_count +=1;
     }
      
