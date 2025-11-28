@@ -84,11 +84,6 @@ Developing this algorithm revealed three distinct categories of error: logical c
 
 ## 3. The Correct Implementation
 
-This solution addresses all identified failures:
-
-- Unconditional resets on every color transition
-- Tail-safe max capture
-- Clean borrowing and correct `Option` usage
 
 ```rust
 #[derive(Debug, Clone)]
@@ -97,30 +92,46 @@ struct Node {
     next: Option<Box<Node>>,
 }
 
+// AUDIT FIX 1: Signature accepts the container type (&Option), not a raw variable name.
 fn find_max_seq(head: &Option<Box<Node>>) -> usize {
-    let mut current_node = head;
+    
+    // AUDIT FIX 2: Initialization copies the single borrow. No double references.
+    let mut current_node = head; 
 
     let mut current_count: usize = 0;
+    
+    // AUDIT FIX 3: Variable handles 'Option<char>' correctly.
+    let mut current_color: Option<char>;
+
+    // AUDIT FIX 4: Safety Map. Extracts value without unsafe access to .val on None.
+    let mut previous_color: Option<char> = head.as_ref().map(|n| n.val);
+
     let mut max_count: usize = 0;
 
-    let mut previous_color: Option<char> = None;
-
     while let Some(node) = current_node {
-        let current_color = Some(node.val);
+        
+        // AUDIT FIX 5: Wraps raw char in Some() to match types.
+        current_color = Some(node.val);
 
-        if previous_color.is_none() || current_color != previous_color {
+        if current_color != previous_color {
+            // Check High Score
             if current_count > max_count {
                 max_count = current_count;
             }
+            // AUDIT FIX 6: UNCONDITIONAL RESET.
+            // Occurs every time color changes, regardless of score.
             current_count = 0;
         }
 
-        current_count += 1;
-        previous_color = current_color;
-
         current_node = &node.next;
+        previous_color = current_color;
+        
+        // Logic: Reset to 0 above, increment to 1 here for the new node.
+        current_count += 1;
     }
 
+    // AUDIT FIX 7: The Tail Check.
+    // Captures the sequence if the list ends on a high note.
     if current_count > max_count {
         max_count = current_count;
     }
