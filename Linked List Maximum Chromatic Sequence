@@ -1,7 +1,5 @@
 
 
------
-
 # Mastering State & Types in Rust: An Audit of Linked List Traversal Errors
 
 Linked list traversal is often dismissed as a trivial academic exercise. However, when combined with state management and Rust’s strict ownership model, even a simple problem can expose fundamental gaps in logic and type safety.
