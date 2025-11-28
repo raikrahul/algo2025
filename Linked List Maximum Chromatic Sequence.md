@@ -175,4 +175,4 @@ Tracing with input: `R -> B -> B -> B`
 - Align your types early to avoid wrestling with the borrow checker.
 
 
-
+https://notebooklm.google.com/notebook/d3e58c90-12ad-4d0a-bf88-dde9be0c6907
