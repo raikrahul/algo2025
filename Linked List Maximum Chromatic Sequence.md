@@ -1,6 +1,6 @@
 # Mastering State & Types in Rust: An Audit of Linked List Traversal Errors
 
-Linked list traversal is often dismissed as a trivial academic exercise. However, when combined with state management and Rust’s strict ownership model, even a simple problem can expose fundamental gaps in logic and type safety.
+Linked list traversal is often dismissed as a trivial academic exercise. However, when combined with state management and Rust's strict ownership model, even a simple problem can expose fundamental gaps in logic and type safety.
 
 This comprehensive guide analyzes the implementation of a "Maximum Consecutive Color Sequence" algorithm, dissecting the specific logical pitfalls and syntax errors encountered during development, and providing a robust, error-free solution.
 
@@ -10,14 +10,14 @@ This comprehensive guide analyzes the implementation of a "Maximum Consecutive C
 
 **Visual Example:**
 
-```text
+```
 Input:  [R] -> [B] -> [R] -> [B] -> [B] -> [R] -> [R] -> [R] -> [R] -> [NULL]
                                      ^                   ^
                                      |                   |
                                Sequence of 2       Sequence of 4 (Winner)
 
 Output: 4
-````
+```
 
 ---
 
@@ -32,7 +32,7 @@ Developing this algorithm revealed three distinct categories of error: logical c
 
 **Visualization of Failure:**
 
-```text
+```
 [State: Count=1 (R)] -> [Input: B] -> [Mismatch Triggered]
          |
 [Decision: Is 1 > Max(0)? YES] -> [Update Max=1] -> [Reset Count=0] -> [OK]
@@ -57,7 +57,7 @@ Developing this algorithm revealed three distinct categories of error: logical c
 
 **Visualization of Failure:**
 
-```text
+```
 [List Tail: ... B -> B -> B -> NULL]
                     |
               [Loop Iterates]
@@ -86,9 +86,9 @@ Developing this algorithm revealed three distinct categories of error: logical c
 
 This solution addresses all identified failures:
 
-* Unconditional resets on every color transition
-* Tail-safe max capture
-* Clean borrowing and correct `Option` usage
+- Unconditional resets on every color transition
+- Tail-safe max capture
+- Clean borrowing and correct `Option` usage
 
 ```rust
 #[derive(Debug, Clone)]
@@ -136,43 +136,43 @@ fn find_max_seq(head: &Option<Box<Node>>) -> usize {
 Tracing with input: `R -> B -> B -> B`
 
 1. **Node R**
+   - `previous_color` is `None`
+   - `max_count = 0`
+   - `current_count = 1`
 
-   * `previous_color` is `None`
-   * `max_count = 0`
-   * `current_count = 1`
 2. **Node B**
+   - mismatch: `R` → `B`
+   - update max to 1
+   - reset and increment to 1
 
-   * mismatch: `R` → `B`
-   * update max to 1
-   * reset and increment to 1
 3. **Node B**
+   - match
+   - increment to 2
 
-   * match
-   * increment to 2
 4. **Node B**
+   - match
+   - increment to 3
 
-   * match
-   * increment to 3
 5. **Loop ends**
+
 6. **Tail check:** 3 > 1 → update
+
 7. **Return:** 3
 
 ---
 
 ## 5. Complexity Analysis
 
-* **Time:** `O(N)` — single traversal
-* **Space:** `O(1)` — constant auxiliary variables
+- **Time:** `O(N)` — single traversal
+- **Space:** `O(1)` — constant auxiliary variables
 
 ---
 
 ## 6. Key Engineering Insights
 
-* Reset logic must be unconditional during state transitions.
-* Always check your final state after the loop terminates.
-* Align your types early to avoid wrestling with the borrow checker.
-
-```
+- Reset logic must be unconditional during state transitions.
+- Always check your final state after the loop terminates.
+- Align your types early to avoid wrestling with the borrow checker.
 
 
 
