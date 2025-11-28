@@ -20,7 +20,10 @@ fn teacup(T: &[usize], S : &[usize], ts : usize, ss: usize) -> i32
 
    let mut tp : usize = 0;
    let mut sp : usize = 0;
-  
+
+   while tp < T.len() && sp < S.len()
+   {
    
+   }
 
 }
