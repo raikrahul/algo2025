@@ -259,3 +259,4 @@ Condition: S[j] >= T[i]
 * **Syntax Hallucination:** Used the `++` operator, which does not exist in Rust (must use `+= 1`).
 * **Implicit Return Failure:** Ended the function with a closed loop `}` rather than an expression or return statement.
   - *Effect:* The function returned `()` (unit type) instead of `usize`, discarding the calculated result.
+https://notebooklm.google.com/notebook/6f4cc9b6-77b8-403d-aadf-7c03b54dabc9
