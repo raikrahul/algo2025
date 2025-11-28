@@ -13,15 +13,15 @@ Output: 3
 
 
 
-fn teacup(T: &[usize], S : &[usize], ts : usize, ss: usize) -> i32
+fn teacup(T: &[usize], S : &[usize], ) -> usize
 {
 
-   let mut res :i32 = 0; 
+   let mut res :usize = 0; 
 
-   let mut tp : usize = 0;
-   let mut sp : usize = 0;
+   let mut i : usize = 0;
+   let mut j : usize = 0;
 
-   while tp < T.len() && sp < S.len()
+   while i < T.len() && j < S.len()
    {
    
    }
