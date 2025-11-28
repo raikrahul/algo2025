@@ -1,4 +1,4 @@
-Here's your blog post with proper Markdown formatting and improved readability:
+
 
 # The Danger of Auto-Pilot: Why "Two Sorted Arrays" Doesn't Always Mean Merge Sort
 
