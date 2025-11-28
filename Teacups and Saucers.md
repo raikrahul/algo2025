@@ -10,3 +10,17 @@ int getMaxNumberOfPairs(int[] T, int[] S, int no_cups, int no_saucers)
 Input: T = {15, 20, 20, 22, 30} and S = {10, 19, 26, 30}
 Output: 3
 ( [15,19], [20,26], [30,30] for instance)
+
+
+
+fn teacup(T: &[usize], S : &[usize], ts : usize, ss: usize) -> i32
+{
+
+   let mut res :i32 = 0; 
+
+   let mut tp : usize = 0;
+   let mut sp : usize = 0;
+  
+   
+
+}
