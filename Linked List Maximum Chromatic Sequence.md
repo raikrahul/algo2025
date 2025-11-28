@@ -176,3 +176,4 @@ Tracing with input: `R -> B -> B -> B`
 
 
 https://notebooklm.google.com/notebook/d3e58c90-12ad-4d0a-bf88-dde9be0c6907
+https://notebooklm.google.com/notebook/d6c364da-1f33-4dbf-98e7-852d6c477a49
