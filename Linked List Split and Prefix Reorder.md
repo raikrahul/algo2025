@@ -17,4 +17,8 @@ pub struct Node
    val :usize,
    next : Option<Box<Node>>,
 }
-fn split_node(
+fn split_node(head :&Node) ->()
+{
+
+
+}
