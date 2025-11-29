@@ -178,4 +178,4 @@ Final Thoughts
 
 My failure here stemmed from a desire to be "clever" and concise. I tried to merge loops and skip steps, assuming I could track the pointer math in my head. I couldn't.
 
-The "Interwoven" solution is elegant, but it is fragile. It requires strict adherence to the topology of the list. Breaking links prematurely is fatal. When in doubt, draw the boxes, trace the arrows, and never burn a bridge you still need to cross.
+https://notebooklm.google.com/notebook/9992ee74-c9e1-4af3-ae43-d0e001ad8c16
