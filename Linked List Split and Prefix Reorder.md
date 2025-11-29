@@ -185,7 +185,18 @@ If an interviewer demands a **strict Single Pass** solution in Rust:
 4. They allow you to aliasing the memory manually.
 
 **Safe Rust guarantees memory safety by forbidding exactly the kind of "pointer gymnastics" required by this algorithm.**
-```
+
+
+
+
+
+
+
+
+
+
+
+
 
 https://notebooklm.google.com/notebook/41a9265b-bd20-4ff3-91d1-56f1d4f263ba
 
