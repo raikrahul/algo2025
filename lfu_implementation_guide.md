@@ -316,3 +316,4 @@ This LFU cache implementation achieves true O(1) operations by combining:
 - Careful bookkeeping of heads, tails, and min_freq
 
 **Total code: ~200 lines for a production-ready O(1) LFU cache!** 🚀
+https://notebooklm.google.com/notebook/d7ec3909-c30f-4854-86df-5d841b058425
